@@ -22,10 +22,10 @@
 
 <?php 
 
-//alert box
+//trim stip tag with function filter_var($string, )
 
-$showMsgBox = "<script>alert('this is msg box');</script>";
-echo $showMsgBox;
+$stringWithStipTags = "<script>alert('this is msg box');</script>";
+echo filter_var($stringWithStipTags, FILTER_SANITIZE_STRIPPED);
 
 ?>
 
