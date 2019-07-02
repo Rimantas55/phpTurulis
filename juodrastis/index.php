@@ -20,7 +20,14 @@
 
 <body>
 
-<?php echo "Test"; ?>
+<?php 
+
+//alert box
+
+$showMsgBox = "<script>alert('this is msg box');</script>";
+echo $showMsgBox;
+
+?>
 
 <script src="script.js"></script>
 </body><!--end of body-->
