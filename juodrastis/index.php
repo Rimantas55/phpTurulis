@@ -20,6 +20,7 @@
 
 <body>
 
+<?php echo "Test"; ?>
 
 <script src="script.js"></script>
 </body><!--end of body-->
