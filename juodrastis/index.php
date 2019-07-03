@@ -22,10 +22,17 @@
 
 <?php 
 
-//trim stip tag with function filter_var($string, )
+//hasshing password
+echo "test123";
+echo "<br>";
+echo "Click restart and you will see that password changes <br>";
+echo password_hash("test123", PASSWORD_DEFAULT);
+echo "<br>";
 
-$stringWithStipTags = "<script>alert('this is msg box');</script>";
-echo filter_var($stringWithStipTags, FILTER_SANITIZE_STRIPPED);
+//checking if entering user password matching with password hashed in db
+$input = "test123"; //this this password user trys to log in
+$hashedPasswordInDatabase = password_hash("test123", PASSWORD_DEFAULT);
+echo password_verify($input, $hashedPasswordInDatabase) . " if password correct returns 1";
 
 ?>
 
