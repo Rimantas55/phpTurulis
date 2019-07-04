@@ -22,42 +22,26 @@
 
     <?php 
 
-//hasshing password
-/*echo "test123";
-echo "<br>";
-echo "Click restart and you will see that password changes <br>";
-echo password_hash("test123", PASSWORD_DEFAULT);
-echo "<br>";
+/*$host = 'localhost';
+$userName = 'root';
+$dbname = 'userDbName';
+$password = '';
+$charset = 'utf-8';
 
-//checking if entering user password matching with password hashed in db
-$input = "test123"; //this this password user trys to log in
-$hashedPasswordInDatabase = password_hash("test123", PASSWORD_DEFAULT);
-echo password_verify($input, $hashedPasswordInDatabase) . " if password correct returns 1";
-echo "<br>";
-*/
-
-?>
-
-<form action="index.php" method="POST">
-    <input type="password" name="password" autofocus="">
-    <button type="submit" name="submit">Submit</button>
-</form>
-
-<?php 
-
-if (isset($_POST['submit'])) {
-    echo $_POST['password']; //passwordas kuris ivedamas ir bus saugomas
-    echo "<br>";
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT); //incriptinamas passwordas
-    echo $password;
-    echo "<br>";
-    if ($_POST['password'] == password_verify($_POST['password'], $password)){ //jei useris iveda teisinga passworda sutikrina su hasintu passwordu duomenu bazeje
-     echo "all right";
- }   
-}
+try {
+    $dsn = "mysql:host = $host; dbname = $dbname; charset = $charset";
+    $pdo = new PDO($dsn, $userName, $password);
+    $pdo->setAttribute(PDO::ATT_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    return $pdo;
+} catch(PDOException $e) {
+    echo 'Connetion failed ' . $e->getMessage();
+}*/
 
 
-
+$emptyArray = [];
+$emptyArray[] = 'Lukas';
+array_push($emptyArray, "New name Tomas");
+print_r($emptyArray); 
 
 
 ?>
