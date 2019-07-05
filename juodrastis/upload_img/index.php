@@ -1,4 +1,4 @@
-<?php include "functions.php"?>
+<?php //include "functions.php"?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,18 +10,16 @@
     <title>Your title</title>
     <!--Font Awesome-->
 
-    <!--Google fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <!--CSS normalizer-->
-    <link rel="stylesheet" type="text/css" href="normalize.css">
-    <!--Main CSS style sheet-->
-    <link rel="stylesheet" type="text/css" href="style.css">
+ 
 </head><!--end of head-->
 
 <body>
-
+<!-- Form to upload images -->
+<form action="upload.php" method="POST" enctype="multipart/form-data">
+    <input type="file" name="file">
+    <button type="submit">UPLOAD</button>
     
-
+</form>
 
 
 <script src="script.js"></script>
