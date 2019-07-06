@@ -21,20 +21,46 @@
 <body>
 
     <?php
-    //if(filer_has_var(INPUT_POST, 'email')) suveikia per submit pan kaip isset
-        if (filter_has_var(INPUT_POST, 'email')) {
-            if(filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL)) {
-                echo "Email format is correct";
-            } else {
-                echo 'Email is NOT valid';
-            }
-        }
+    //Validation per arrays
+    /*
+    filter_var();
+    FILTER_VALIDATE_BOOLEAN
+    FILTER_VALIDATE_EMAIL - do not accept not latin letters, kirilica will be not validate despite email strucke is correct
+    FILTER_VALIDATE_FLOAT
+    FILTER_VALIDATE_INT
+    FILTER_VALIDATE_IP
+    FILTER_VALIDATE_REGEXP
+    FILTER_VALIDATE_URL
+
+    FILTER_SANITIZE_EMAIL
+    FILTER_SANITIZE_ENCODED
+    FILTER_SANITIZE_NUMBER_FLOAT
+    FILTER_SANITIZE_NUMBER_INT
+    FILTER_SANITIZE_SPECIAL_CHARS
+    FILTER_SANITIZE_STRING - eliminates hmtl tags ect <h1> and so on
+    FILTER_SANITIZE_URL
+    */
+
+    $filters = [
+        'email' => FILTER_VALIDATE_EMAIL,
+        'someText' => [
+            'filter' => FILTER_VALIDATE_INT,
+            'options' => [
+                'min_range' => 1,
+                'max_range' => 5,
+            ]
+        ]
+    ];
+        
+    print_r(filter_input_array(INPUT_POST,$filters));
+        
     ?>
 
-    <!-- Email Validation -->
+    <!-- Validiation -->
     <form action="index.php" method="POST">
         <input type="email" name="email">
-        <button type="submit">Validate Email</button>
+        <input type="text" name="someText">
+        <button type="submit">Submit</button>
     </form>
 
 
