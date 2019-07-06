@@ -21,7 +21,7 @@ if(isset($_POST['submit'])) {
 		if ($fileError === 0) {
 			if ($fileSize < 1000000) {
 				$fileNameNew = uniqid('',true) . "." . $fileActualExt;
-				$fileDestination = 'uploads/'.$fileNameNew;
+				$fileDestination = 'upload_img/uploads/'.$fileNameNew;
 				move_uploaded_file($fileTmpName, $fileDestination);
 				header("Location: index.php?uploadsuccess");
 			} else {

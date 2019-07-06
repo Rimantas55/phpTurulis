@@ -20,7 +20,23 @@
 
 <body>
 
-    
+    <?php
+    //if(filer_has_var(INPUT_POST, 'email')) suveikia per submit pan kaip isset
+        if (filter_has_var(INPUT_POST, 'email')) {
+            if(filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL)) {
+                echo "Email format is correct";
+            } else {
+                echo 'Email is NOT valid';
+            }
+        }
+    ?>
+
+    <!-- Email Validation -->
+    <form action="index.php" method="POST">
+        <input type="email" name="email">
+        <button type="submit">Validate Email</button>
+    </form>
+
 
 
 
