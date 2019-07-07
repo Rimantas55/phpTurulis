@@ -1,0 +1,165 @@
+<?php
+//debuginimui geras code
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+$host = 'localhost'; //$serverName
+$dbname = 'loginapp';
+$user = 'root'; //$userName
+$password = ''; //pass galima pasikeisti per msq Previleges-> Change password
+
+//Set DSN
+
+//$dsn = 'mysql:host='.$host.';dbname='.$dbname; //kitas uzrasymo budas
+$dsn = "mysql:host=$host; dbname=$dbname";
+$pdo = new PDO($dsn, $user, $password);
+$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ); //jei sita setAttribute() naudosim, galima resyti fetch()) rasant while ir nennaudoti fetch(PDO::FETCH_OBJ)) pvz:
+//while($row = $stmt->fetch()){ //nenaudojam FETCH_OBJ bus israiska //$row->title
+	//echo $row->title . '<br>';
+//}
+
+#PDO QUERY
+// $stmt = $pdo->query('SELECT * FROM posts'); //$stmt is like $statement
+
+// First Method
+// while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+// 	echo $row['title'] . '<br>';
+// }
+
+// while($row = $stmt->fetch()){ //naudojant FETCH_OBJ bus israiska $row->title
+// 	echo $row->title . '<br>';
+// }
+
+# First Method
+# PREPAREAD STATEMENTS (prepare & execute)
+
+# FETCH MULTIPLY POSTS
+
+//$author = 'Brad';
+
+#Positional parameters //always need pass before parameters ect $author = 'Rimas';
+// $sql = 'SELECT * FROM posts WHERE author = ?';
+// $stmt = $pdo->prepare($sql);
+// $stmt->execute([$author]);
+// $posts = $stmt->fetchAll();
+
+// echo "<pre>";
+// var_dump($posts);
+// echo "<pre>" . "<br>";
+
+// foreach ($posts as $post) {
+// 	echo $post->title . "<br>";
+// }
+
+
+
+# Second Method
+# NAMED PARAMETERS
+
+// $author = 'Rimas'; //always need pass before parameters ect $author = 'Rimas';
+// $is_published = true; //jei norime prideti papildoma parametra
+
+// $sql = 'SELECT * FROM posts WHERE author = :author && is_published = :is_published';
+// $stmt = $pdo->prepare($sql);
+// $stmt->execute([
+// 	'author' => $author,
+// 	'is_published' => $is_published,
+// ]);
+// $posts = $stmt->fetchAll();
+
+// echo "<pre>";
+// var_dump($posts);
+// echo "<pre>" . "<br>";
+
+// foreach ($posts as $post) {
+// 	echo $post->title . "<br>";
+// }
+
+# FETCH SINGLE POST
+
+// $author = 'Brad'; //always need pass before parameters ect $author = 'Rimas';
+// $is_published = true; //jei norime prideti papildoma parametra
+// $id = 3;
+
+// $sql = 'SELECT * FROM posts WHERE id = :id';
+// $stmt = $pdo->prepare($sql);
+// $stmt->execute([
+// 	'id' => $id,
+// ]);
+
+// $post = $stmt->fetch();
+
+// echo $post->title;
+// echo "<br>";
+// echo $post->body;
+
+# GET ROW COUNT
+// $author = 'Brad'; //always need pass before parameters ect $author = 'Rimas';
+// $is_published = true; //jei norime prideti papildoma parametra
+// $id = 1;
+
+// $stmt = "SELECT * FROM posts WHERE author = ?";
+// $stmt = $pdo->prepare($stmt); //galima rasyti ir per viena eilute: $stmt = $pdo->prepare("SELECT * FROM posts WHERE author = ?");
+// $stmt->execute([$author]);
+// $postCount = $stmt->rowCount();
+
+// echo $postCount;
+
+
+
+
+#INSERT DATA
+// $title = 'Post six 6';
+// $body = 'This is post five';
+// $author = 'Kevin';
+
+// $sql = 'INSERT INTO posts(title, body, author) VALUES(:title, :body, :author)';
+// $stmt = $pdo->prepare($sql);
+// $stmt->execute([
+// 	'title' => $title,
+// 	'body' => $body,
+// 	'author' => $author,
+// ]);
+
+//echo 'Post added';
+
+
+
+
+# UPDATE DATA
+// $id = 7;
+// $body = 'This is updated post';
+// $author = 'Kevin';
+// $title = 'Post seven 7';
+
+// $sql = 'UPDATE posts SET title = :title WHERE id = :id';
+// $stmt = $pdo->prepare($sql);
+// $stmt->execute([
+// 	'title' => $title,
+// 	'id' => $id,
+// ]);
+
+// echo "Post have been updated";
+
+# DELETE POST
+// $id = 7;
+
+// $sql = 'DELETE FROM posts WHERE id = :id';
+// $stmt = $pdo->prepare($sql);
+// $stmt->execute([
+// 	'id' => $id,
+// ]);
+
+// echo "Post 7 Roko postas have been deleted";
+
+# SEARCH DATA
+$search = "%post%"; //post is that word which we will look for
+$sql = 'SELECT * FROM posts WHERE title LIKE ?';
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$search]);
+$posts = $stmt->fetchAll();
+
+foreach ($posts as $post) {
+	echo $post->title . "<br>";
+}
