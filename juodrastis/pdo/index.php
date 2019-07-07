@@ -25,9 +25,22 @@ $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ); //jei sita set
 
 #PDO QUERY
 $stmt = $pdo->query('SELECT * FROM posts'); //$stmt is like $statement
-#First Method using fetch(PDO::FETCH_ASSOC)
-while($row = $stmt->fetch(PDO::FETCH_ASSOC)){ //while naudojam kai norim visa info outputinti is lenteles stulpelio
-	echo $row['author'] . '<br>';
+// #First Method using fetch(PDO::FETCH_ASSOC)
+// while($row = $stmt->fetch(PDO::FETCH_ASSOC)){ //while naudojam kai norim visa info outputinti is lenteles stulpelio
+// 	echo $row['author'] . '<br>';
+// }
+
+//output
+// Post one 1
+// Post two 2
+// Post three 3
+// Post four 4
+// Post fifth 5
+// Post six 6
+
+#Second Method 
+while($row = $stmt->fetch()){ //naudojant FETCH_OBJ prie $pdo->setArrtibute bus israiska echo $row->title
+	echo $row->title . '<br>';
 }
 
 //output

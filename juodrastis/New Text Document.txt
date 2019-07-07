@@ -27,7 +27,7 @@ $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ); //jei sita set
 // 	echo $row['title'] . '<br>';
 // }
 
-// while($row = $stmt->fetch()){ //naudojant FETCH_OBJ bus israiska $row->title
+// while($row = $stmt->fetch()){ //naudojant FETCH_OBJ prie $pdo->setArrtibute bus israiska $row->title
 // 	echo $row->title . '<br>';
 // }
 
