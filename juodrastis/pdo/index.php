@@ -40,7 +40,7 @@ $stmt = $pdo->query('SELECT * FROM posts'); //$stmt is like $statement
 
 #Second Method 
 while($row = $stmt->fetch()){ //naudojant FETCH_OBJ prie $pdo->setArrtibute bus israiska echo $row->title
-	echo $row->title . '<br>';
+	//echo $row->title . '<br>';
 }
 
 //output
@@ -54,13 +54,36 @@ while($row = $stmt->fetch()){ //naudojant FETCH_OBJ prie $pdo->setArrtibute bus 
 # FETCH MULTIPLY POSTS
 # First Method - PREPAREAD STATEMENTS (prepare & execute)
 
-$author = 'Brad';
+// $author = 'Brad';
 
-#Positional parameters //always need pass before parameters ect $author = 'Rimas';
-$sql = 'SELECT * FROM posts WHERE author = ?';
+// #Positional parameters //always need pass before parameters ect $author = 'Rimas';
+// $sql = 'SELECT * FROM posts WHERE author = ?';
+// $stmt = $pdo->prepare($sql);
+// $stmt->execute([$author]);
+// $posts = $stmt->fetchAll();//$posts yra sukurtas variable kuris nurodo ka istraukinesim
+
+// echo "<pre>";
+// var_dump($posts);
+// echo "<pre>" . "<br>";
+
+// foreach ($posts as $post) {
+// 	echo $post->title . "<br>";
+// }
+
+
+
+# Second Method - NAMED PARAMETERS
+
+$author = 'Brad'; //always need pass before parameters ect $author = 'Rimas';
+$is_published = true; //jei norime prideti papildoma parametra
+
+$sql = 'SELECT * FROM posts WHERE author = :author && is_published = :is_published';
 $stmt = $pdo->prepare($sql);
-$stmt->execute([$author]);
-$posts = $stmt->fetchAll();//$posts yra sukurtas variable kuris nurodo ka istraukinesim
+$stmt->execute([
+	'author' => $author,
+	'is_published' => $is_published,
+]);
+$posts = $stmt->fetchAll();
 
 echo "<pre>";
 var_dump($posts);
