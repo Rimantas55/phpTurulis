@@ -129,16 +129,34 @@ while($row = $stmt->fetch()){ //naudojant FETCH_OBJ prie $pdo->setArrtibute bus 
 
 
 #INSERT DATA
-$title = 'Post six 6';
-$body = 'This is post five';
-$author = 'Kevin';
+// $title = 'Post six 6';
+// $body = 'This is post five';
+// $author = 'Kevin';
 
-$sql = 'INSERT INTO posts(title, body, author) VALUES(:title, :body, :author)';
+// $sql = 'INSERT INTO posts(title, body, author) VALUES(:title, :body, :author)';
+// $stmt = $pdo->prepare($sql);
+// $stmt->execute([
+// 	'title' => $title,
+// 	'body' => $body,
+// 	'author' => $author,
+// ]);
+
+// echo 'Post added';
+
+
+
+
+# UPDATE DATA
+$id = 7;
+$body = 'This is updated post';
+$author = 'Kevin';
+$title = 'Post seven 7';
+
+$sql = 'UPDATE posts SET title = :title WHERE id = :id';
 $stmt = $pdo->prepare($sql);
 $stmt->execute([
 	'title' => $title,
-	'body' => $body,
-	'author' => $author,
+	'id' => $id,
 ]);
 
-echo 'Post added';
+echo "Post have been updated";
