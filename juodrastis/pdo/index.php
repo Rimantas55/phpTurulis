@@ -115,13 +115,30 @@ while($row = $stmt->fetch()){ //naudojant FETCH_OBJ prie $pdo->setArrtibute bus 
 
 
 # GET ROW COUNT
-$author = 'Brad'; //always need pass before parameters ect $author = 'Rimas';
-$is_published = true; //jei norime prideti papildoma parametra
-$id = 1;
+// $author = 'Brad'; //always need pass before parameters ect $author = 'Rimas';
+// $is_published = true; //jei norime prideti papildoma parametra
+// $id = 1;
 
-$stmt = "SELECT * FROM posts WHERE author = ?";
-$stmt = $pdo->prepare($stmt); //galima rasyti ir per viena eilute: $stmt = $pdo->prepare("SELECT * FROM posts WHERE author = ?");
-$stmt->execute([$author]);
-$postCount = $stmt->rowCount();
+// $stmt = "SELECT * FROM posts WHERE author = ?";
+// $stmt = $pdo->prepare($stmt); //galima rasyti ir per viena eilute: $stmt = $pdo->prepare("SELECT * FROM posts WHERE author = ?");
+// $stmt->execute([$author]);
+// $postCount = $stmt->rowCount();
 
-echo $postCount; //output 3
+// echo $postCount; //output 3
+
+
+
+#INSERT DATA
+$title = 'Post six 6';
+$body = 'This is post five';
+$author = 'Kevin';
+
+$sql = 'INSERT INTO posts(title, body, author) VALUES(:title, :body, :author)';
+$stmt = $pdo->prepare($sql);
+$stmt->execute([
+	'title' => $title,
+	'body' => $body,
+	'author' => $author,
+]);
+
+echo 'Post added';
