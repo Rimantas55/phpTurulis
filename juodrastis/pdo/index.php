@@ -147,16 +147,29 @@ while($row = $stmt->fetch()){ //naudojant FETCH_OBJ prie $pdo->setArrtibute bus 
 
 
 # UPDATE DATA
-$id = 7;
-$body = 'This is updated post';
-$author = 'Kevin';
-$title = 'Post seven 7';
+// $id = 7;
+// $body = 'This is updated post';
+// $author = 'Kevin';
+// $title = 'Post seven 7';
 
-$sql = 'UPDATE posts SET title = :title WHERE id = :id';
+// $sql = 'UPDATE posts SET title = :title WHERE id = :id';
+// $stmt = $pdo->prepare($sql);
+// $stmt->execute([
+// 	'title' => $title,
+// 	'id' => $id,
+// ]);
+
+// echo "Post have been updated";
+
+
+
+# DELETE POST
+$id = 7;
+
+$sql = 'DELETE FROM posts WHERE id = :id';
 $stmt = $pdo->prepare($sql);
 $stmt->execute([
-	'title' => $title,
 	'id' => $id,
 ]);
 
-echo "Post have been updated";
+echo "Post 7 Roko postas have been deleted";
