@@ -74,21 +74,41 @@ while($row = $stmt->fetch()){ //naudojant FETCH_OBJ prie $pdo->setArrtibute bus 
 
 # Second Method - NAMED PARAMETERS
 
+// $author = 'Brad'; //always need pass before parameters ect $author = 'Rimas';
+// $is_published = true; //jei norime prideti papildoma parametra
+
+// $sql = 'SELECT * FROM posts WHERE author = :author && is_published = :is_published';
+// $stmt = $pdo->prepare($sql);
+// $stmt->execute([
+// 	'author' => $author,
+// 	'is_published' => $is_published,
+// ]);
+// $posts = $stmt->fetchAll();
+
+// echo "<pre>";
+// var_dump($posts);
+// echo "<pre>" . "<br>";
+
+// foreach ($posts as $post) {
+// 	echo $post->title . "<br>";
+// }
+
+
+
+# FETCH SINGLE POST
+
+$id = 3; //pagal id galim issimti bet kokia tame id esancia info
 $author = 'Brad'; //always need pass before parameters ect $author = 'Rimas';
 $is_published = true; //jei norime prideti papildoma parametra
 
-$sql = 'SELECT * FROM posts WHERE author = :author && is_published = :is_published';
+$sql = 'SELECT * FROM posts WHERE id = :id';
 $stmt = $pdo->prepare($sql);
 $stmt->execute([
-	'author' => $author,
-	'is_published' => $is_published,
+	'id' => $id,
 ]);
-$posts = $stmt->fetchAll();
 
-echo "<pre>";
-var_dump($posts);
-echo "<pre>" . "<br>";
+$post = $stmt->fetch();
 
-foreach ($posts as $post) {
-	echo $post->title . "<br>";
-}
+echo $post->title;
+echo "<br>";
+echo $post->body;
