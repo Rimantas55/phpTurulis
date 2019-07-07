@@ -97,18 +97,31 @@ while($row = $stmt->fetch()){ //naudojant FETCH_OBJ prie $pdo->setArrtibute bus 
 
 # FETCH SINGLE POST
 
-$id = 3; //pagal id galim issimti bet kokia tame id esancia info
+// $id = 3; //pagal id galim issimti bet kokia tame id esancia info
+// $author = 'Brad'; //always need pass before parameters ect $author = 'Rimas';
+// $is_published = true; //jei norime prideti papildoma parametra
+
+// $sql = 'SELECT * FROM posts WHERE id = :id';
+// $stmt = $pdo->prepare($sql);
+// $stmt->execute([
+// 	'id' => $id,
+// ]);
+
+// $post = $stmt->fetch();
+
+// echo $post->title;
+// echo "<br>";
+// echo $post->body;
+
+
+# GET ROW COUNT
 $author = 'Brad'; //always need pass before parameters ect $author = 'Rimas';
 $is_published = true; //jei norime prideti papildoma parametra
+$id = 1;
 
-$sql = 'SELECT * FROM posts WHERE id = :id';
-$stmt = $pdo->prepare($sql);
-$stmt->execute([
-	'id' => $id,
-]);
+$stmt = "SELECT * FROM posts WHERE author = ?";
+$stmt = $pdo->prepare($stmt); //galima rasyti ir per viena eilute: $stmt = $pdo->prepare("SELECT * FROM posts WHERE author = ?");
+$stmt->execute([$author]);
+$postCount = $stmt->rowCount();
 
-$post = $stmt->fetch();
-
-echo $post->title;
-echo "<br>";
-echo $post->body;
+echo $postCount; //output 3
