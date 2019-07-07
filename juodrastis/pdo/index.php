@@ -164,12 +164,25 @@ while($row = $stmt->fetch()){ //naudojant FETCH_OBJ prie $pdo->setArrtibute bus 
 
 
 # DELETE POST
-$id = 7;
+// $id = 7;
 
-$sql = 'DELETE FROM posts WHERE id = :id';
+// $sql = 'DELETE FROM posts WHERE id = :id';
+// $stmt = $pdo->prepare($sql);
+// $stmt->execute([
+// 	'id' => $id,
+// ]);
+
+// echo "Post 7 Roko postas have been deleted";
+
+
+
+# SEARCH DATA
+$search = "%post%"; //post is that word which we will look for
+$sql = 'SELECT * FROM posts WHERE title LIKE ?';
 $stmt = $pdo->prepare($sql);
-$stmt->execute([
-	'id' => $id,
-]);
+$stmt->execute([$search]);
+$posts = $stmt->fetchAll();
 
-echo "Post 7 Roko postas have been deleted";
+foreach ($posts as $post) {
+	echo $post->title . "<br>";
+}
