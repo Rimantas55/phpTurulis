@@ -50,3 +50,22 @@ while($row = $stmt->fetch()){ //naudojant FETCH_OBJ prie $pdo->setArrtibute bus 
 // Post four 4
 // Post fifth 5
 // Post six 6
+
+# FETCH MULTIPLY POSTS
+# First Method - PREPAREAD STATEMENTS (prepare & execute)
+
+$author = 'Brad';
+
+#Positional parameters //always need pass before parameters ect $author = 'Rimas';
+$sql = 'SELECT * FROM posts WHERE author = ?';
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$author]);
+$posts = $stmt->fetchAll();//$posts yra sukurtas variable kuris nurodo ka istraukinesim
+
+echo "<pre>";
+var_dump($posts);
+echo "<pre>" . "<br>";
+
+foreach ($posts as $post) {
+	echo $post->title . "<br>";
+}

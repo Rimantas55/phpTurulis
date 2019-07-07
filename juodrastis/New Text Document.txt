@@ -31,10 +31,10 @@ $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ); //jei sita set
 // 	echo $row->title . '<br>';
 // }
 
-# First Method
-# PREPAREAD STATEMENTS (prepare & execute)
 
 # FETCH MULTIPLY POSTS
+# PREPAREAD STATEMENTS (prepare & execute)
+# First Method
 
 //$author = 'Brad';
 
