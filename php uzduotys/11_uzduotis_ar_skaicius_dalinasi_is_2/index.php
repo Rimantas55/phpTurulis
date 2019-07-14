@@ -24,6 +24,7 @@ echo '<br>';*/
 $number = rand(1,36);
 function abc($number){
 	for ($i=1; $i <= $number; $i*=2) { 
+		echo $i . '<br>';
 		$e = $i;
 	}
 		if ($e == $number) {
