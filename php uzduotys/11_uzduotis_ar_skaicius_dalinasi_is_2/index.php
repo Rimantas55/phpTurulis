@@ -27,14 +27,14 @@ function abc($number){
 		echo $i . '<br>';
 		$e = $i;
 	}
-		if ($e == $number) {
-			return '<h3>' . $e . ' is root of 2' . '</h3>';
-		} else {
-			return' NOOO this is ' . $number . '<br>';
-		}
+	if ($i == $number) {
+		return '<h3>' . $i . ' is root of 2' . '</h3>';
+	} else {
+		return' NOOO this is ' . $number . '<br>';
+	}
 }
 
- echo abc($number);
+echo abc($number);
 
 
 

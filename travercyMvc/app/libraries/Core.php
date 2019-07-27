@@ -3,7 +3,7 @@
 /*
 App Core Class
 Creates URL & loads core controller
-YRL FORMAT - example: /controller/method/params
+URL FORMAT - example: /controller/method/params
 */
 class Core 
 {
@@ -18,6 +18,12 @@ class Core
 
 	public function getUrl()
 	{
-		echo $_GET['url'];
+		//echo $_GET['url']; //cia pagal trevis
+		if (isset($_GET['url'])) { //cia rekomenduotas code is comment, tuomet nemeta error jei path yra tuscias, pvz: http://localhost/phpTurulis/travercyMvc/
+	echo $_GET['url'];
+	} else {
+		echo 'Tuscias URL / check app/labrieries/Core.php';
+	}
+
 	}
 }

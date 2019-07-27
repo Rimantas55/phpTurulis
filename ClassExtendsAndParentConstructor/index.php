@@ -45,7 +45,7 @@ class Customer extends User
 	}
 
 	public function getBalance() {
-		return $this->name . ' have paid ' . $this->balance;
+		return  "<strong>" . $this->name . "</strong>" . ' have paid ' . $this->balance;
 	}
 
 	//to get parameter $balance we need create in the same class new getters and setters
@@ -68,3 +68,5 @@ $customer1 = new Customer('John', 33, ' , you have 1000 dol. in balance');
 echo $customer1->__get('balance');
 echo BR;
 echo $customer1->pay(100);
+echo BR;
+echo $customer1->getBalance();

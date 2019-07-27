@@ -7,7 +7,7 @@ const BR = '<br>';
 const preTag = '<pre>';
 const preEndTag = '</pre>';
 
-function print_rPre($array) {
+function debug($array) {
 	echo '<pre>';
 	print_r($array);
 	echo '<pre>';
