@@ -12,6 +12,8 @@
  * C:\xampp\htdocs\phpTurulis\travercyMvc\app
  */
 
-echo __FILE__ . '<br>';
-echo dirname(__FILE__) . '<br>';
-echo dirname(dirname(__FILE__)) . '<br>';
+//xampp\htdocs\phpTurulis\travercyMvc\app
+define('APPROOT', dirname(dirname(__FILE__))) . '<br>';
+define('URLROOT', 'http://localhost/phpTurulis/travercyMvc'); //jei paliksim sliasa / po travercyMvc/ veliau rasant nereikes deti, bet jei nepaliksim reikes nepamirsti prirasyti
+// Site Name
+define('SITENAME', 'TravercyMVC');
