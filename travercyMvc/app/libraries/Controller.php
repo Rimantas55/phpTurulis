@@ -18,7 +18,7 @@ class Controller
 	}
 
 	// Load view
-	public function view($view, $data = [])
+	public function view($view, $data = []) //sita galima uzvadinti render funkcija
 	{
 		// check for view file
 		if(file_exists('../app/views/' . $view . '.php')){

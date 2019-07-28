@@ -10,12 +10,16 @@ class Pages extends Controller
 	//defotinis page pagal method, nes Core.php mes parasem kad index paramters bus default metodas
 	public function index() 
 	{
-		$this->view('Hello');
+		$data = [
+			'title' => "Welcome"
+		];
+		
+		$this->view('pages/index', $data);
 
 	}
 
-	public function about($id) 
+	public function about() 
 	{
-		echo $id;
+		$this->view('pages/about');
 	}
 }
