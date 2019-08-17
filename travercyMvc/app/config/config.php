@@ -2,9 +2,9 @@
 
 // DB Params
 define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', '');
-define('DB_NAME', 'tmvc');
+define('DB_USER', '_YOUR_USER_');
+define('DB_PASS', '_YOUR_PASS_');
+define('DB_NAME', '_YOUR_DBNAME_');
 
 // App Root
 /* 
@@ -20,6 +20,6 @@ define('DB_NAME', 'tmvc');
 
 //xampp\htdocs\phpTurulis\travercyMvc\app
 define('APPROOT', dirname(dirname(__FILE__))) . '<br>';
-define('URLROOT', 'http://localhost/phpTurulis/travercyMvc'); //jei paliksim sliasa / po travercyMvc/ veliau rasant viewsuose nereikes deti, bet jei nepaliksim reikes nepamirsti prirasyti
+define('URLROOT', '_YOUR_URL_'); //jei paliksim sliasa / po travercyMvc/ veliau rasant viewsuose nereikes deti, bet jei nepaliksim reikes nepamirsti prirasyti
 // Site Name
-define('SITENAME', 'TravercyMVC');
+define('SITENAME', '_YOUR_SITENAME_');
