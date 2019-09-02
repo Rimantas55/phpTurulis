@@ -1,0 +1,21 @@
+div {
+	max-width: 600px;
+	margin: auto;
+	text-align: center;
+}
+
+input {
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+form {
+	background-color: lightgrey;
+	padding: 15px;
+}	
+
+::placeholder {
+	color:red;
+	text-align: center;
+}
+
