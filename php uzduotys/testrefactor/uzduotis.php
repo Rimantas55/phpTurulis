@@ -1,63 +1,65 @@
 <?php
 /*I'm new to PHP and trying to create a form with all fields required, including one where a file must be selected. Here is what I would like to achieve:
 
-user must complete 4 fields + upload a file
-file can only be of a certain type + under a certain size
-if user does not complete one of the requirements and clicks submit, the word "Required" appears next to the empty field
-if selected file does not meet criteria, a different message appears
-data is preserved in the fields that were filled in if the user left something blank and has to go back to fill it in.
+DONE user must complete 4 fields + upload a file
+
+DONE file can only be of a certain type + under a certain size
+DONE if user does not complete one of the requirements and clicks submit, the word "Required" appears next to the empty field
+DONE if selected file does not meet criteria, a different message appears
+I think DONE data is preserved in the fields that were filled in if the user left something blank and has to go back to fill it in.
 when form submits, info goes into database + into an email
+
 I am close but missing something. If I select a file that meets the requirements, the form submits even if the other fields are blank. As long as the form field is empty, the other fields behave correctly. What am I missing? I would appreciate any help. Thank you.*/
 
- require_once('../scripts/lcoa.php'); ?>
-        <?php 
-        if (isset($_GET['jobid'])) {
-        $jobid = $_GET['jobid'];
-        }
-        if (isset($_GET['jobtitle'])) {
-        $jobtitle = $_GET['jobtitle'];
-        }
-         //This is the directory where resumes will be saved 
-        $timestamp = time();
-        $folder = "../careers/resumes/"; 
-        $resume = ($_FILES['resume']['name']);
-        $target = $folder.basename($timestamp.$_FILES['resume']['name']); 
-        $type = ($_FILES['resume']['type']);
+ // require_once('../scripts/lcoa.php'); 
+       
+ //        if (isset($_GET['jobid'])) {
+ //        $jobid = $_GET['jobid'];
+ //        }
+ //        if (isset($_GET['jobtitle'])) {
+ //        $jobtitle = $_GET['jobtitle'];
+ //        }
+ //         //This is the directory where resumes will be saved 
+ //        $timestamp = time();
+ //        $folder = "../careers/resumes/"; 
+ //        $resume = ($_FILES['resume']['name']);
+ //        $target = $folder.basename($timestamp.$_FILES['resume']['name']); 
+ //        $type = ($_FILES['resume']['type']);
         $extension = strtolower(substr($resume, strpos($resume, '.') + 1)); 
-        $size = ($_FILES['resume']['size']);
-        $max_size = 3145728;
+        // $size = ($_FILES['resume']['size']);
+        // $max_size = 3145728;
 
 
-        $name  = ($_POST['name']);
-        $email  = ($_POST['email']);
-        $phone  = ($_POST['phone']);
-        $jobid = ($_POST['jobid']);
-        $jobtitle = ($_POST['jobtitle']);
+        // $name  = ($_POST['name']);
+        // $email  = ($_POST['email']);
+        // $phone  = ($_POST['phone']);
+        // $jobid = ($_POST['jobid']);
+        // $jobtitle = ($_POST['jobtitle']);
         $cover = ($_POST['coverletter']);
-        $error=array();
+        // $error=array();
 
 
-            if(isset($name)){
-                if (empty ($name)){
-             $error['name']="<p class='error'>Required </p>";
+            // if(isset($name)){
+            //     if (empty ($name)){
+            //  $error['name']="<p class='error'>Required </p>";
 
-                }
-            }
-            if(isset($email)){
-                if (empty ($email)){
-             $error['email']="<p class='error'>Required </p>";
-                }
-            }
-            if(isset($phone)){
-                    if (empty ($phone)){
-                 $error['phone']="<p class='error'>Required </p>";
-                    }
-                }
-            if(isset($cover)){
-                    if (empty ($cover)){
-                 $error['coverletter']="<p class='error'>Required </p>";
-                    }
-                }
+            //     }
+            // }
+            // if(isset($email)){
+            //     if (empty ($email)){
+            //  $error['email']="<p class='error'>Required </p>";
+            //     }
+            // }
+            // if(isset($phone)){
+            //         if (empty ($phone)){
+            //      $error['phone']="<p class='error'>Required </p>";
+            //         }
+            //     }
+            // if(isset($cover)){
+            //         if (empty ($cover)){
+            //      $error['coverletter']="<p class='error'>Required </p>";
+            //         }
+            //     }
         //Writes the resume to the server 
         if (isset ($resume)) {
 
@@ -116,5 +118,30 @@ I am close but missing something. If I select a file that meets the requirements
 
 
 
-         
+
+// Allow certain file formats
+
+//$extension=='doc'||$extension=='docx'||$extension=='txt'||$extension=='pdf')&&($type=='application/pdf'||'application/msword'||'application/vnd.openxmlformats-officedocument.wordprocessingml.document'||'text/plain
+
+//&& $imageFileType != "doc" && $imageFileType != "docx" && $imageFileType != "txt" && $imageFileType != "application/pdf" && $imageFileType != "application/msword" $imageFileType != "application/vnd.openxmlformats-officedocument.wordprocessingml.document" && $imageFileType != "text/plai"  
+
+
+
+
+
+         // Check if image file is a actual image or fake image
+		/*if(isset($_POST["submit"])) {
+			$check = getimagesize($_FILES["resume"]["tmp_name"]);
+			if($check !== false) {
+				echo "File is an image - " . $check["mime"] . ".";
+				$uploadOk = 1;
+			} else {
+				echo "File is not an image.";
+				$uploadOk = 0;
+			}
+		}*/
+
+
+
+
          ?>
